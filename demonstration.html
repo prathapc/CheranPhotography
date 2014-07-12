@@ -1,0 +1,183 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"> 
+<html>
+
+<head>
+  <title>Cheran's photography</title>
+	<style>
+		* {font-family: sans-serif; color:#fff;} 
+		a, h1, h2, h3, h4, h5 {text-align:center; color:#eee;}
+		body {background:#333;}
+	</style>
+
+  
+	<!-- <script type="text/javascript" src="third.party/jquery-1.9.0.min.js"></script> --> 
+	<script type="text/javascript" src="third.party/jquery-1.7.1.min.js"></script>
+	<script type="text/javascript" src="third.party/transit/jquery.transit.min.js"></script>
+	<!-- <script type="text/javascript" src="third.party/hammer.js/hammer.min.js"></script> -->
+	<script type="text/javascript" src="third.party/imagesloaded/imagesloaded.pkgd.min.js"></script>
+
+  
+	<!-- Fancybox - Optionnal -->
+	<!-- <link href="third.party/fancybox/jquery.fancybox.css?v=2.1.4" rel="stylesheet" type="text/css">
+	<script type="text/javascript" src="third.party/fancybox/jquery.fancybox.pack.js?v=2.1.4"></script> 
+	<link href="third.party/fancybox/helpers/jquery.fancybox-buttons.css?v=1.0.5" rel="stylesheet" type="text/css">
+	<script type="text/javascript" src="third.party/fancybox/helpers/jquery.fancybox-buttons.js?v=1.0.5"></script> 
+	<script type="text/javascript" src="third.party/fancybox/helpers/jquery.fancybox-media.js?v=1.0.5"></script> -->
+	<!-- Fancybox -->
+
+	<!-- nanoGALLERY - default css file -->
+	<link href="css/nanogallery.css" rel="stylesheet" type="text/css">
+
+	<!-- nanoGALLERY - css file for the theme 'clean' -->
+	<link href="css/themes/clean/nanogallery_clean.css" rel="stylesheet" type="text/css">
+
+	<!-- nanoGALLERY - css file for the theme 'light' -->
+	<link href="css/themes/light/nanogallery_light.css" rel="stylesheet" type="text/css">
+
+	<!-- nanoGALLERY javascript -->
+	<script type="text/javascript" src="jquery.nanogallery.js"></script> 
+	<!-- <script type="text/javascript" src="src/jquery.nanogallery.js"></script>  -->
+
+	<!-- nanoGALLERY DEMO PANEL javascript -->
+	<script type="text/javascript" src="jquery.nanogallerydemo.js"></script> 
+  
+	<script>
+		$(document).ready(function () {
+    
+			// Sample1
+			myColorScheme = {
+				breadcrumb : {
+					background : '#000',
+					border : '1px dotted #555',
+					color : '#ccc',
+					colorHover:'#fff'
+				},
+				thumbnail : {
+					background:'#000',
+					border:'1px solid #000',
+					labelBackground:'transparent',
+					labelOpacity:'0.8',
+					titleColor:'#fff',
+					descriptionColor:'#eee'
+				}
+			};
+			myColorSchemeViewer = {
+				background:'rgba(1, 1, 1, 0.75)',
+				imageBorder:'12px solid #f8f8f8',
+				imageBoxShadow:'#888 0px 0px 20px',
+				barBackground:'#222',
+				barBorder:'2px solid #111',
+				barColor:'#eee',
+				barDescriptionColor:'#aaa'
+			};
+
+      // custom thumbnail hover effect
+      function myThumbnailInit($elt, item) {
+      }
+      function myThumbnailHoverInit($elt, item) {
+        $elt.find('.labelDescription').css({'opacity':'0'});
+      }
+      function myThumbnailHover($elt, item) {
+        $elt.find('.labelDescription').delay(150).animate({'opacity':'1'},400);
+      }
+      function myThumbnailHoverOut($elt, item) {
+        $elt.find('.labelDescription').animate({'opacity':'0'},300);
+      }
+
+			jQuery("#nanoGallery1").nanoGallery({thumbnailWidth:120,thumbnailHeight:120,
+			items: [
+				{
+					src: 'demonstration/image_01.jpg',		// image url
+					srct: 'demonstration/image_01t.jpg',	// thumbnail url
+					title: 'image 1', 						        // thumbnail title
+					description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+					title_FR: 'image 2 (fr)',
+					description_FR : 'description image 1 (fr)'
+				}				],
+				thumbnailHoverEffect:'labelSlideUpTop,borderLighter',
+				thumbnailLabel:{display:true,position:'overImageOnBottom'},
+        viewerDisplayLogo:true,
+        //thumbnailInit:myThumbnailInit,
+        fnThumbnailHoverInit:myThumbnailHoverInit,
+        fnThumbnailHover:myThumbnailHover,
+        fnThumbnailHoverOut:myThumbnailHoverOut
+			});
+
+		
+
+
+	
+		
+      
+			//Sample3 - Picasa/Google+
+			jQuery("#nanoGallery3").nanoGallery({thumbnailWidth:300,thumbnailHeight:200,
+        userID:'prathap.choudhury@gmail.com',
+        kind:'picasa',
+        blackList:'Scrapbook|forhomepage|profil',
+        photoSorting:'random',
+        albumSorting:'random',
+        colorScheme:myColorScheme,
+        //locationHash:true,
+        thumbnailLabel:{title:'%filenameNoExt', itemsCount:'title'},
+        viewerDisplayLogo:true,
+				thumbnailHoverEffect:[{'name':'scaleLabelOverImage','duration':300},{'name':'borderLighter'}]
+			});
+
+  
+
+
+
+
+
+			jQuery("#nanoGallery3a").nanoGallery({thumbnailWidth:'auto',thumbnailHeight:170,userID:'prathap.choudhury@gmail.com',kind:'picasa',blackList:'Scrapbook|forhomepage|profil',
+				//maxItemsPerLine:3,
+				//album: '6030794583738465505',
+        album:'6030794583738465505',
+      //  album:'6030795257595428913',
+        colorScheme:'none',
+        locationHash:false,
+        viewerDisplayLogo:true,
+				thumbnailHoverEffect:[{'name':'labelAppear75','duration':300},{'name':'borderDarker'}],
+        theme:'light',
+        photoSorting:'random',
+        i18n:{'thumbnailImageDescription':'View Photo', 'thumbnailAlbumDescription':'Open Album'},
+				thumbnailLabel:{display:true,position:'overImageOnMiddle'},
+        colorSchemeViewer:'default'
+			});
+
+			
+						
+						
+
+			// DEMONSTRATION
+ 			jQuery("#nanoGalleryAnimation1").nanoGalleryDemo({thumbnailWidth:120, thumbnailHeight:120, itemsBaseURL:'demonstration',
+        viewerDisplayLogo:true,
+				thumbnailHoverEffect:[{'name':'borderLighter','duration':300}]
+			});
+
+			
+		});
+	</script>
+
+</head>
+
+<body>
+	<!-- <h2><img src="images\logo.jpg" /></h2>  --> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<a href="index.html">Home</a>
+	<div style="margin:auto;max-width:960px;">
+		<div id="nanoGallery3"></div>
+	</div>
+  <br><br><br>
+
+	<!--
+//displaying single gallery
+
+ <div style="margin:auto;max-width:960px;background:#fff;color:#f00;">
+		<br><br><br>
+    <div id="nanoGallery3a"></div>
+    <br><br><br> -->
+	</div>
+
+
+	
+	</body>
+</html>
