@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 nanoGALLERY - jQuery plugin 
 ===========
 
@@ -138,3 +139,9 @@ Optional:
 * imagesloaded (https://github.com/desandro/imagesloaded) (credits: David DeSandro)
 * fancybox2 - jQuery plugin (https://github.com/fancyapps/fancyBox) (credits: Janis Skarnelis)
 
+=======
+CheranPhotography
+=================
+
+HTML5+CSS+jQuery
+>>>>>>> e846cafd49731ef134c1eb27c87b9658d1b59560
