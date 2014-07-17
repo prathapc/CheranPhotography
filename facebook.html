@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Facebook Login JavaScript Example</title>
+<script type="text/javascript" 
+   src="/jquery/jquery-1.3.2.min.js"></script>
+<meta charset="UTF-8">
+</head>
+<body>
+<script>
+	//1443420979247602 --> CheranPhotography
+	//655373897876273 --> Connect
+  window.fbAsyncInit = function() 
+  {
+  	FB.init({
+    appId      : '1443420979247602',
+    status     : true, // check login status
+    cookie     : true, // enable cookies to allow the server to access the session
+    xfbml      : true  // parse XFBML
+  	});
+
+  	FB.getLoginStatus(function(response) 
+	{
+    	if (response.status === 'connected') 
+      	{
+          alert(" connected");
+        //  window.location="Home?userId="+response.authResponse.userID+"&accessToken="+response.authResponse.accessToken;
+              // what to do with the response
+		// testAPI();
+      	}
+    	else if (response.status === 'not_authorized') 
+    	{
+    		console.log("Response:"+response);
+    		console.log(JSON.stringify(response));
+    		alert("not_authorized")
+    		
+          
+      	}
+    	else
+    	{
+    		alert("Please login with FB to explore more :-)")
+        
+      }
+  });
+
+};
+
+  // Load the SDK asynchronously
+  ( function(d)
+		  {
+   				var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+   				if (d.getElementById(id))
+   				{
+   					return;
+   				}
+				js = d.createElement('script'); js.id = id; js.async = true;
+				js.src = "//connect.facebook.net/en_US/all.js";
+				ref.parentNode.insertBefore(js, ref);
+		   }
+		  (document));
+
+   </script>
+   <script type="text/javascript">
+        function loginFacebook() 
+        {
+            FB.login(function(response) 
+            {
+                if (response.authResponse) 
+                {
+                	// window.location="Home?userId="+response.authResponse.userID+"&accessToken="+response.authResponse.accessToken;
+                	getUserInfo();
+                    // connected
+                   
+                } 
+                else 
+                {
+                	console.log(response);
+                    // cancelled
+                }
+            },
+            {scope: 'user_about_me,user_interests,publish_stream'});
+        }
+        
+        function getUserInfo() {
+            FB.api('/me', function(response) {
+            	alert("Welcome "+response.name);
+             //response.name       - User Full name
+             //response.link       - User Facebook URL
+             //response.username   - User name
+             //response.id         - id
+             //response.email      - User email
+      
+             });
+        }
+        
+        function Logout()
+        {
+            FB.logout(function(){document.location.reload();});
+         
+        }
+   </script>
+
+<!--
+  Below we include the Login Button social plugin. This button uses
+  the JavaScript SDK to present a graphical Login button that triggers
+  the FB.login() function when clicked.
+-->
+<h1>Welcome to Cheranphotography!!</h1>
+<br/>
+<a href="" onClick="loginFacebook();  return false;">Login with FB</a><br />
+<a href="" onClick="Logout();" >Logout</a><br /> <br /> <br /> <br /> <br /> <br /> <br />  
+
+<div class="fb-like-box" data-href="https://www.facebook.com/codekart" data-colorscheme="light" data-show-faces="true" data-header="true" data-stream="false" data-show-border="true"></div><br /><br /><br />
+
+<div class="fb-like" data-href="http://www.codekart.in/" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div><br />
+
+<div class="fb-comments" data-href="http://www.codekart.in" data-numposts="5" data-colorscheme="light"></div>
+
+<div id="status">
+</div>
+
+
+</body>
+</html>
